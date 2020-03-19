@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in $(ls /home/andreabertana/Projects/HCP/data/MNI/)
+do 
+cd /home/andreabertana/Projects/haxby_8cat/data/$i	

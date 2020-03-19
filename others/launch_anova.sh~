@@ -1,0 +1,11 @@
+#!/bin/bash
+#this script should be run from the home
+
+
+for subjname in $(cat ./Projects/HCP/results/list_subject65.txt)
+do
+
+#subjname="100307"
+python /home/andreabertana/Projects/HCP/pipeline/anova.py /home/andreabertana/Projects/HCP/results/MNI/MOTOR/detrend/$subjname'_det_mc.nii.gz' /home/andreabertana/Projects/HCP/results/MNI/MOTOR/atlas_masks/nnzero/$subjname'_motor_nnzero.nii.gz' ./Projects/HCP/results/MNI/MOTOR/label/concatenated/$subjname'_labels.txt' /home/andreabertana/Projects/HCP/results/MNI/MOTOR/label/$subjname'_labels_pymvpa.txt' /home/andreabertana/Projects/HCP/results/MNI/MOTOR/atlas_masks/anova/$subjname'_anova1000.nii.gz' 
+
+done

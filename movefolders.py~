@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb  6 14:42:08 2014
+
+@author: andreabertana
+"""
+
+import shutil
+import os
+
+path =  '/media/HCP-U80-20131216/'
+#direction = np.array(['LR/', 'RL/'])
+path_dest = '/home/andreabertana/Projects/HCP/data/'
+
+
+for subjname in os.listdir(path):
+    print subjname
+    source = path + subjname + '/unprocessed/3T/tfMRI_WM_LR/'
+    destination = path_dest + subjname + '/tfMRI_WM_LR/'
+    shutil.copytree(source, destination)    
+    print destination
+    print source
+    source_second = path + subjname + '/unprocessed/3T/tfMRI_WM_RL/'
+    destination_second = destination + '/tfMRI_WM_RL'
+    shutil.copytree(source_second, destination_second)
+    print destination_second
+    print source_second
+    
+
+
+        
+
+

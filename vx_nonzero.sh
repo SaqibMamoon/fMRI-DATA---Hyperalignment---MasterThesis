@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for i in $(cat ./Projects/HCP/results/list_subject_first10.txt)
+do
+cd /home/andreabertana/Projects/HCP/results/MNI/
+echo "Appling mask to functional" 
+fslmaths ./detrend/$i'_det_mc.nii.gz' -thr 0.5 -bin ./detrend/vt_nnzero/$i'_det_mc_vtnnzero.nii.gz'
+echo "Done"
+
+cd ..
+done
+echo "All subjects done"
+
+

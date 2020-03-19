@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#This script should be run from home
+ 
+for p in $(cat /home/andreabertana/Projects/HCP/results/list_subject_nofirst10.txt)
+
+do
+	mkdir /home/andreabertana/Projects/HCP/data/$p/tfMRI_MOTOR_RL/
+	mkdir /home/andreabertana/Projects/HCP/data/$p/tfMRI_MOTOR_LR/
+	#echo $p
+	cp -r /media/HCP-U80-20131216/$p/MNINonLinear/Results/tfMRI_MOTOR_RL/* /home/andreabertana/Projects/HCP/data/$p/tfMRI_MOTOR_RL/
+	cp -r /media/HCP-U80-20131216/$p/MNINonLinear/Results/tfMRI_MOTOR_LR/* /home/andreabertana/Projects/HCP/data/$p/tfMRI_MOTOR_LR/
+done
+
+
+cd .. 
+

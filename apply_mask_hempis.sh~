@@ -1,0 +1,16 @@
+#!/bin/bash
+
+input = $1
+output = $2
+#for i in $(ls /home/andreabertana/Projects/HCP/MNI/)
+#do 
+cd /home/andreabertana/Projects/HCP/results/MNI/
+echo "Appling sx mask to functional" 
+fslmaths $input -mas ./vtmask/maskMNI2mm.nii.gz $output
+echo "Done"
+
+cd ..
+#done
+echo "All subjects done"
+
+$ /results/MNI/mc/$i'_mc.nii.gz'

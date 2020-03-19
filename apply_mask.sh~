@@ -1,0 +1,15 @@
+#!/bin/bash
+
+for i in $(ls /home/andreabertana/Projects/HCP/MNI/)
+do 
+cd /home/andreabertana/Projects/HCP/results/MNI/
+echo "Appling sx mask to functional" 
+fslmaths ./mc/$i"_mc.nii.gz" -mas ./vtmask_native/$i"_mask_back2native_sx.nii.gz" ./smoothpydet/masks/func_vtmask/$i"funcmask_sx"
+echo "Done"
+echo "Appling dx mask to functional"
+fslmaths ./smoothpydet/$i"_smoothpydetr.nii.gz" -mas ./vtmask_native/$i"_mask_back2native_dx.nii.gz" ./smoothpydet/masks/func_vtmask/$i"funcmask_dx"
+echo "Done"
+
+cd ..
+done
+echo "All subjects done"

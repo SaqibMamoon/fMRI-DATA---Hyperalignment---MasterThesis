@@ -1,0 +1,29 @@
+#!/bin/bash
+
+pwd
+for subjname in $(cat /home/andreabertana/Projects/HCP/results/list_subject_9.txt)
+#subjname=100307
+do
+cd /home/andreabertana/Projects/HCP/results/MNI/MOTOR
+pwd
+
+# Extraction of the spatial autocorrelation
+a=$( 3dFWHMx ./afni/scaling/$subjname'_norm'+tlrc)
+
+# Extraction of cluster extent
+3dClustSim -nxyz 91 109 91 -dxyz 2.0 2.0 2.0 -mask ./afni/whole_mask/$subjname'_mask'+tlrc -fwhmxyz $a -nodec -prefix ./afni/$subjname'_clustsim'
+
+b=$(cat ./afni/$subjname'_clustsim.NN1.1D' | grep 0.00100 | awk '{print $3}')
+
+# Extraction of clustered maps
+3dmerge -dxyz=1 -1clust 1 $b -1thresh 4 -1tindex 17 -1dindex 16 -prefix ./afni/$subjname'_cluster' ./afni/glm/100307_glm+tlrc
+
+# Extraction of labelled clustered list
+3dmerge -dxyz=1 -1clust_order 1 $b -1thresh 4 -1tindex 17 -1dindex 16 -prefix ./afni/$subjname'_clusterorder' ./afni/glm/$subjname'_glm'+tlrc
+
+3dAFNItoNIFTI -float -prefix ./afni/$subjname'_clust' ./afni/$subjname'_clusterorder'+tlrc.
+
+echo 'done'
+cd .. 
+done
+

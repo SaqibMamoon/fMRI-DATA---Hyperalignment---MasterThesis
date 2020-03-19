@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# FSL normal smoothing ( the option -s gives the size of the smoothing)
+
+for i in $(cat ./Projects/HCP/results/list_subject_first10.txt)
+do
+cd /home/andreabertana/Projects/HCP/results/MNI/
+fslmaths ./detrend/$i'_det_mc.nii.gz' -s 4 ./smoothing/det/$i'_smooth_det.nii.gz'
+echo "Done"
+cd ..
+done
+echo "All subjects done"
+
+#list of input and ouput depending on the conditions
+
+#smooth after det
+# input = ./detrend/$i'_det.nii.gz' output = ./smooth_det/$i'_smooth_det.nii.gz'
+
+#smooth on mc 
+# input = ./mc/$i'_mc.nii.gz' output = ./smooth/$i'_smooth.nii.gz'
+
+#on raw data

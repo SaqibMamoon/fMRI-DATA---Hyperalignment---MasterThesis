@@ -1,0 +1,16 @@
+#!/bin/bash
+
+for i in $(ls /home/andreabertana/Projects/HCP/MNI/)
+do 
+cd /home/andreabertana/Projects/HCP/
+	pwd
+	#Concatenate the two runs together
+	echo 'merging'$i
+	fslmerge -t ./results/MNI/merge/$i'_merge.nii.gz' ./tfMRI_WM_RL/tfMRI_WM_RL.nii.gz ./tfMRI_WM_LR/tfMRI_WM_LR.nii.gz
+	echo 'merging correct'	
+#Motion corrected of all dataset over the sbref volume
+	echo 'doing mc'
+	mcflirt -in ./results/MNI/merge/$i'_merge.nii.gz' -out ./results/MNI/mc/$i'_mc.nii.gz' -refvol /tfMRI_WM_RL/tfMRI_WM_RL_SBRef.nii.gz -verbose 1 -plots
+	echo 'MC done'
+printf 'Done. \n'
+done
