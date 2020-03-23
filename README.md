@@ -13,7 +13,7 @@ debated topics in current FMRI research. It is not difficult to understand in fa
 direct match between different participants brains give the possibility of addressing new scientific
 questions by analyzing between participants differences and similarities.
 
-This problem, has been firstly addressed by using anatomical alignment algorithms. With these
+This problem has been firstly addressed by using anatomical alignment algorithms. With these
 strategies each individual brain is warped to a common reference template (Talaraich, MNI) in
 order to establish spatial correspondence between brains. Therefore, after brain normalization, a
 point in the common space identified by its x, y, z coordinates is assumed to refer to a similar
